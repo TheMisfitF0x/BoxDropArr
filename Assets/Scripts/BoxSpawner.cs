@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class BoxSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject box_Prefab;
+
     void Start()
     {
-        
+        SpawnBox();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnBox()
     {
-        
+        GameObject box_Obj = Instantiate(box_Prefab);
+        box_Obj.transform.position = transform.position;
     }
 }
