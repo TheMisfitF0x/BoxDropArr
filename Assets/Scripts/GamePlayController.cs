@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePlayController : MonoBehaviour {
+public class GameplayController : MonoBehaviour {
 
     public static GameplayController instance;
 
@@ -23,7 +23,7 @@ public class GamePlayController : MonoBehaviour {
 
     void Start()
     {
-        box_spawner.SpawnBox();
+        box_Spawner.SpawnBox();
     }
 
     // Update is called once per frame
