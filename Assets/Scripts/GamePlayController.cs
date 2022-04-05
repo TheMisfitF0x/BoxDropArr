@@ -57,7 +57,7 @@ public class GameplayController : MonoBehaviour {
         if(moveCount == 3)
         {
             moveCount = 0;
-            //cameraScript.targetPos.y += 2f;
+            cameraScript.targetPos.y += 1f;
         }
     }
 
