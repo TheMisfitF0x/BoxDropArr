@@ -96,20 +96,13 @@ public class BoxScript : MonoBehaviour
             Invoke("Landed", 0.8f);
             ignoreCollision = true;
         }
-
-
-        //if (target.gameObject.tag == "Box")
-        //{
-        //    Invoke("Landed", 2f);
-        //    ignoreCollision = true;
-        //}
-
+       
     }
 
     void OnTriggerEnter2D(Collider2D target)
     {
-        if (ignoreTrigger)
-            return;
+        if (ignoreTrigger)            
+        return;
 
         if(target.tag == "GameOver")
         {
@@ -119,5 +112,6 @@ public class BoxScript : MonoBehaviour
 
             Invoke("RestartGame", 1f);
         }
+        
     }
 }
