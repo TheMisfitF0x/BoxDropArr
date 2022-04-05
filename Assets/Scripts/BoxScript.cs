@@ -93,6 +93,7 @@ public class BoxScript : MonoBehaviour
 
         if (target.gameObject.tag == "Platform" | target.gameObject.tag == "Box")
         {
+            GameplayController.instance.addScore();
             Invoke("Landed", 0.8f);
             ignoreCollision = true;
         }

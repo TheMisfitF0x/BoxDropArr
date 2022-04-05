@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameplayController : MonoBehaviour {
 
     public static GameplayController instance;
 
     public BoxSpawner box_Spawner;
+    public int score;
+    public Text scoretxt;
 
     [HideInInspector]
     public BoxScript currentBox;
+    
 
     public CameraFollow cameraScript;
     private int moveCount;
@@ -48,6 +52,12 @@ public class GameplayController : MonoBehaviour {
     void NewBox()
     {
         box_Spawner.SpawnBox();
+    }
+
+    public void addScore()
+    {
+        score++;
+        scoretxt.text = "" + score;
     }
 
     public void MoveCamera()
