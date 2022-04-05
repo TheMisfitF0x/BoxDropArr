@@ -93,7 +93,7 @@ public class BoxScript : MonoBehaviour
 
         if (target.gameObject.tag == "Platform" | target.gameObject.tag == "Box")
         {
-            Invoke("Landed", 2f);
+            Invoke("Landed", 0.8f);
             ignoreCollision = true;
         }
 
@@ -117,7 +117,7 @@ public class BoxScript : MonoBehaviour
             gameOver = true;
             ignoreTrigger = true;
 
-            Invoke("RestartGame", 2f);
+            Invoke("RestartGame", 1f);
         }
     }
 }
