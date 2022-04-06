@@ -105,7 +105,9 @@ public class BoxScript : MonoBehaviour
         if (ignoreTrigger)            
         return;
 
-        if(target.tag == "GameOver")
+        //gameObject was added from 2nd video
+        //if(target.tag == "GameOver")
+        if (target.gameObject.tag == "GameOver")
         {
             CancelInvoke("Landed");
             gameOver = true;

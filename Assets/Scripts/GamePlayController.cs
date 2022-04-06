@@ -27,6 +27,7 @@ public class GameplayController : MonoBehaviour {
 
     void Start()
     {
+        score = 0;
         box_Spawner.SpawnBox();
     }
 
