@@ -39,7 +39,7 @@ public class GameplayController : MonoBehaviour {
 
     void DetectInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !pauseMenu.isPaused)
         {
             currentBox.DropBox();
         }
