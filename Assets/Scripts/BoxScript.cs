@@ -102,8 +102,7 @@ public class BoxScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D target)
     {
-        if (ignoreTrigger)            
-        return;
+        
 
         //gameObject was added from 2nd video
         //if(target.tag == "GameOver")
