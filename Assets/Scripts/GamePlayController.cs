@@ -10,6 +10,10 @@ public class GameplayController : MonoBehaviour {
     public BoxSpawner box_Spawner;
     public int score;
     public Text scoretxt;
+    private AudioSource[] soundSource;
+    private AudioSource scoreSound;
+    private AudioSource loseSound;
+    
 
     [HideInInspector]
     public BoxScript currentBox;
@@ -22,6 +26,9 @@ public class GameplayController : MonoBehaviour {
     {
         if (instance == null)
             instance = this;
+        soundSource = GetComponents<AudioSource>();
+        scoreSound = soundSource[0];
+        loseSound = soundSource[1];
     }
 
 
@@ -59,6 +66,7 @@ public class GameplayController : MonoBehaviour {
     {
         score++;
         scoretxt.text = "" + score;
+        scoreSound.Play();
     }
 
     public void MoveCamera()
@@ -74,8 +82,24 @@ public class GameplayController : MonoBehaviour {
 
     public void RestartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        
+    }
+
+    public void playSound(int soundNum)
+    {
+        if (!loseSound.isPlaying)
+        {
+            if (soundNum == 1)
+            {
+                loseSound.Play();
+            }
+            else
+            {
+                scoreSound.Play();
+            }
+        }
     }
     //class
 }

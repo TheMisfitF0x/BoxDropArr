@@ -10,6 +10,7 @@ public class BoxScript : MonoBehaviour
     private float move_Speed = 2f;
 
     private Rigidbody2D myBody;
+    private AudioSource soundSource;
 
     private bool gameOver;
     private bool ignoreCollision;
@@ -17,6 +18,7 @@ public class BoxScript : MonoBehaviour
 
     void Awake()
     {
+        soundSource = GetComponent<AudioSource>();
         myBody = GetComponent<Rigidbody2D>();
         myBody.gravityScale = 0f;
     }
@@ -70,6 +72,7 @@ public class BoxScript : MonoBehaviour
 
     void Landed()
     {
+        
         if (gameOver)
             return;
 
@@ -88,11 +91,12 @@ public class BoxScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D target)
     {
-        if (ignoreCollision)
-            return;
-
         if (target.gameObject.tag == "Platform" | target.gameObject.tag == "Box")
         {
+            soundSource.Play();
+
+            if (ignoreCollision)
+                return;
             GameplayController.instance.addScore();
             Invoke("Landed", 0.8f);
             ignoreCollision = true;
@@ -108,11 +112,12 @@ public class BoxScript : MonoBehaviour
         //if(target.tag == "GameOver")
         if (target.gameObject.tag == "GameOver")
         {
+            GameplayController.instance.playSound(1);
             CancelInvoke("Landed");
             gameOver = true;
             ignoreTrigger = true;
 
-            Invoke("RestartGame", 1f);
+            Invoke("RestartGame", 1.5f);
         }
         
     }
