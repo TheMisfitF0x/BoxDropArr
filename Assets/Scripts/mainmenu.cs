@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class mainmenu : MonoBehaviour
 {
-    private Text highScoreText;
+    
+    public TextMeshProUGUI highScoreText;
     private void Start()
     {
-        
+        highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
     }
 
     public void playGame()

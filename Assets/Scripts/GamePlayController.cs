@@ -9,7 +9,9 @@ public class GameplayController : MonoBehaviour {
 
     public BoxSpawner box_Spawner;
     public int score;
+    private int highScore;
     public Text scoretxt;
+    public Text highscoretxt;
     private AudioSource[] soundSource;
     private AudioSource scoreSound;
     private AudioSource loseSound;
@@ -35,6 +37,7 @@ public class GameplayController : MonoBehaviour {
     void Start()
     {
         score = 0;
+        highscoretxt.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
         box_Spawner.SpawnBox();
     }
 
@@ -67,6 +70,12 @@ public class GameplayController : MonoBehaviour {
         score++;
         scoretxt.text = "" + score;
         scoreSound.Play();
+
+        if (score > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+            highscoretxt.text = "" + score;
+        }
     }
 
     public void MoveCamera()
