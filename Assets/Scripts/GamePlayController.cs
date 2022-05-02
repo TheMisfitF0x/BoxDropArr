@@ -41,31 +41,32 @@ public class GameplayController : MonoBehaviour {
         scoreSound.volume = PlayerPrefs.GetFloat("Volume", 1);
         loseSound.volume = PlayerPrefs.GetFloat("Volume", 1);
         box_Spawner.SpawnBox();
+        pauseMenu.isPaused = false;
 
         switch(PlayerPrefs.GetInt("PlatformSize", 2))
         {
             case 1:
                 {
-                    platform.transform.localScale.Set((float).3, platform.transform.localScale.y, platform.transform.localScale.z);
+                    platform.transform.localScale = new Vector3((float).3, platform.transform.localScale.y, platform.transform.localScale.z);
                     break;
                 }
 
             case 2:
                 {
-                    platform.transform.localScale.Set((float).78, platform.transform.localScale.y, platform.transform.localScale.z);
-                    
+                    platform.transform.localScale = new Vector3((float).78, platform.transform.localScale.y, platform.transform.localScale.z);
+
                     break;
                 }
 
             case 3:
                 {
-                    platform.transform.localScale.Set((float) 1.2, platform.transform.localScale.y, platform.transform.localScale.z);
+                    platform.transform.localScale = new Vector3((float)1.2, platform.transform.localScale.y, platform.transform.localScale.z);
                     break;
                 }
 
             default:
                 {
-                    platform.transform.localScale.Set((float) .78, platform.transform.localScale.y, platform.transform.localScale.z);
+                    platform.transform.localScale = new Vector3((float).78, platform.transform.localScale.y, platform.transform.localScale.z);
                     break;
                 }
         }
