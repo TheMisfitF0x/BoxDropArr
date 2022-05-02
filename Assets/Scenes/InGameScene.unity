@@ -1003,6 +1003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   box_Spawner: {fileID: 992524164}
+  platform: {fileID: 2033751538}
   score: 0
   scoretxt: {fileID: 426468901}
   highscoretxt: {fileID: 2141761211}
@@ -1016,7 +1017,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339779019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.158868, y: -1.1882794, z: -9.566722}
+  m_LocalPosition: {x: 0, y: -1.1882794, z: -9.566722}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1774,7 +1775,7 @@ Transform:
   m_GameObject: {fileID: 2033751538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -4.83, z: -1.35}
-  m_LocalScale: {x: 0.78, y: 0.14, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.14, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1

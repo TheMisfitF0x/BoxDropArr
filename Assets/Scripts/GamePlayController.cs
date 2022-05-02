@@ -8,6 +8,7 @@ public class GameplayController : MonoBehaviour {
     public static GameplayController instance;
 
     public BoxSpawner box_Spawner;
+    public GameObject platform;
     public int score;
     private int highScore;
     public Text scoretxt;
@@ -33,12 +34,41 @@ public class GameplayController : MonoBehaviour {
         loseSound = soundSource[1];
     }
 
-
     void Start()
     {
         score = 0;
         highscoretxt.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+        scoreSound.volume = PlayerPrefs.GetFloat("Volume", 1);
+        loseSound.volume = PlayerPrefs.GetFloat("Volume", 1);
         box_Spawner.SpawnBox();
+
+        switch(PlayerPrefs.GetInt("PlatformSize", 2))
+        {
+            case 1:
+                {
+                    platform.transform.localScale.Set((float).3, platform.transform.localScale.y, platform.transform.localScale.z);
+                    break;
+                }
+
+            case 2:
+                {
+                    platform.transform.localScale.Set((float).78, platform.transform.localScale.y, platform.transform.localScale.z);
+                    
+                    break;
+                }
+
+            case 3:
+                {
+                    platform.transform.localScale.Set((float) 1.2, platform.transform.localScale.y, platform.transform.localScale.z);
+                    break;
+                }
+
+            default:
+                {
+                    platform.transform.localScale.Set((float) .78, platform.transform.localScale.y, platform.transform.localScale.z);
+                    break;
+                }
+        }
     }
 
     // Update is called once per frame
