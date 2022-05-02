@@ -12,10 +12,12 @@ public class mainmenu : MonoBehaviour
     public TextMeshProUGUI platformSizeText;
 
     public Slider volSlider;
+    public Slider speedSlider;
     private void Start()
     {
         highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
         volSlider.value = PlayerPrefs.GetFloat("Volume", 1);
+        speedSlider.value = PlayerPrefs.GetFloat("SpawnerSpeed", 2);
 
         switch (PlayerPrefs.GetInt("PlatformSize", 2))
         {
@@ -48,6 +50,11 @@ public class mainmenu : MonoBehaviour
     public void updateVolume()
     {
         PlayerPrefs.SetFloat("Volume", volSlider.value);
+    }
+
+    public void updateSpawnerSpeed(float newVal)
+    {
+        PlayerPrefs.SetFloat("SpawnerSpeed", newVal);
     }
 
     public void updatePlatformSize(int sizeIndex)

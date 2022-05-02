@@ -27,6 +27,7 @@ public class BoxScript : MonoBehaviour
     void Start()
     {
         canMove = true;
+        move_Speed = PlayerPrefs.GetFloat("SpawnerSpeed", 2);
 
         if(Random.Range(0, 2) > 0)
         {
