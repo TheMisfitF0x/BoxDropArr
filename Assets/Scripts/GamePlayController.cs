@@ -9,15 +9,29 @@ public class GameplayController : MonoBehaviour {
 
     public BoxSpawner box_Spawner;
     public GameObject platform;
+
     public int score;
+
+    public Sprite audioMutedImg;
+    public Sprite audioImg;
+    public Sprite musicMutedImg;
+    public Sprite musicImg;
+
     private int highScore;
+    public static bool musicIsMuted;
+    public static bool audioIsMuted;
+
     public Text scoretxt;
     public Text highscoretxt;
+
     private AudioSource[] soundSource;
     private AudioSource scoreSound;
     private AudioSource loseSound;
-    
+    private AudioSource musicSound;
 
+    public Button muteAudioButton;
+    public Button muteMusicButton;
+    
     [HideInInspector]
     public BoxScript currentBox;
     
@@ -32,15 +46,37 @@ public class GameplayController : MonoBehaviour {
         soundSource = GetComponents<AudioSource>();
         scoreSound = soundSource[0];
         loseSound = soundSource[1];
+        musicSound = soundSource[2];
     }
 
     void Start()
     {
         score = 0;
         highscoretxt.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+
         scoreSound.volume = PlayerPrefs.GetFloat("Volume", 1);
         loseSound.volume = PlayerPrefs.GetFloat("Volume", 1);
+        musicSound.volume = PlayerPrefs.GetFloat("Music", .5f);
+
+        if(PlayerPrefs.GetInt("AudioMuted", 0) == 1)
+        {
+            scoreSound.mute = true;
+            loseSound.mute = true;
+            audioIsMuted = true;
+
+            muteAudioButton.image.sprite = audioMutedImg;
+        }
+
+        if (PlayerPrefs.GetInt("MusicMuted",0) == 1)
+        {
+            musicSound.mute = true;
+            musicIsMuted = true;
+
+            muteMusicButton.image.sprite = musicMutedImg;
+        }
+
         box_Spawner.SpawnBox();
+
         pauseMenu.isPaused = false;
 
         switch(PlayerPrefs.GetInt("PlatformSize", 2))
@@ -139,6 +175,48 @@ public class GameplayController : MonoBehaviour {
             {
                 scoreSound.Play();
             }
+        }
+    }
+
+    public void toggleAudio()
+    {
+        if(audioIsMuted == false)
+        {
+            scoreSound.mute = true;
+            loseSound.mute = true;
+            audioIsMuted = true;
+            PlayerPrefs.SetInt("AudioMuted", 1);
+
+            muteAudioButton.image.sprite = audioMutedImg;
+        }
+        else
+        {
+            scoreSound.mute = false;
+            loseSound.mute = false;
+            audioIsMuted = false;
+            PlayerPrefs.SetInt("AudioMuted", 0);
+
+            muteAudioButton.image.sprite = audioImg;
+        }
+    }
+
+    public void toggleMusic()
+    {
+        if (musicIsMuted == false)
+        {
+            musicSound.mute = true;
+            musicIsMuted = true;
+            PlayerPrefs.SetInt("MusicMuted", 1);
+
+            muteMusicButton.image.sprite = musicMutedImg;
+        }
+        else
+        {
+            musicSound.mute = false;
+            musicIsMuted = false;
+            PlayerPrefs.SetInt("MusicMuted", 0);
+
+            muteMusicButton.image.sprite = musicImg;
         }
     }
     //class

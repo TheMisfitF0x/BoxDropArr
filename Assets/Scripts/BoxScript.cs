@@ -94,7 +94,10 @@ public class BoxScript : MonoBehaviour
     {
         if (target.gameObject.tag == "Platform" | target.gameObject.tag == "Box")
         {
-            soundSource.Play();
+            if (GameplayController.audioIsMuted == false)
+            {
+                soundSource.Play();
+            }
 
             if (ignoreCollision)
                 return;

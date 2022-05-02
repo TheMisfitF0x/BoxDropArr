@@ -13,11 +13,18 @@ public class mainmenu : MonoBehaviour
 
     public Slider volSlider;
     public Slider speedSlider;
+    public Slider musicSlider;
+
+    public AudioSource music;
     private void Start()
     {
         highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+
         volSlider.value = PlayerPrefs.GetFloat("Volume", 1);
         speedSlider.value = PlayerPrefs.GetFloat("SpawnerSpeed", 2);
+        musicSlider.value = PlayerPrefs.GetFloat("Music", 1);
+
+        music.volume = PlayerPrefs.GetFloat("Music", .5f);
 
         switch (PlayerPrefs.GetInt("PlatformSize", 2))
         {
@@ -50,6 +57,12 @@ public class mainmenu : MonoBehaviour
     public void updateVolume()
     {
         PlayerPrefs.SetFloat("Volume", volSlider.value);
+    }
+
+    public void updateMusic(float newVal)
+    {
+        PlayerPrefs.SetFloat("Music", newVal);
+        music.volume = newVal;
     }
 
     public void updateSpawnerSpeed(float newVal)
